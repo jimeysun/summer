@@ -5,4 +5,4 @@
  * @author zytan
  *
  */
-package com.summer.shopping.backend;
+package com.summer.shopping.persistence;

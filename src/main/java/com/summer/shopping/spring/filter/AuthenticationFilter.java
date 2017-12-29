@@ -10,13 +10,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 @WebFilter("/")
 public class AuthenticationFilter implements Filter {
-	private static Log LOG = LogFactory.getLog(AuthenticationFilter.class);
+	private static final Logger LOG = LogManager.getLogger(AuthenticationFilter.class);
 	@Override
 	  public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain)
 	      throws IOException, ServletException {
