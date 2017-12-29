@@ -110,21 +110,23 @@
       </plugin>
       
       <!-- webpack -->
-      <!-- 
       <plugin>
 	   <groupId>com.github.eirslett</groupId>
 	   <artifactId>frontend-maven-plugin</artifactId>
-	   <version>1.4</version>
+	   <version>1.5</version>
+	   <configuration>
+	     <nodeVersion>v8.4.0</nodeVersion>
+	     <npmVersion>5.3.0</npmVersion>
+	     <workingDirectory>src/main/frontend/</workingDirectory>
+	     <installDirectory>src/main/frontend/node_maven/</installDirectory>
+	   </configuration>  
 	   <executions>
 	    <execution>
 	     <id>Install node and npm locally to the project</id>
 	     <goals>
 	      <goal>install-node-and-npm</goal>
 	     </goals>
-	     <configuration>
-	      <nodeVersion>v8.0.0</nodeVersion>
-	      <npmVersion>5.0.3</npmVersion>
-	     </configuration>
+	     <phase>generate-resources</phase>
 	    </execution>
 	
 	    <execution>
@@ -132,19 +134,21 @@
 	     <goals>
 	      <goal>npm</goal>
 	     </goals>
+	     <phase>generate-resources</phase>
+	     <configuration>
+	       <arguments>install</arguments>
+	     </configuration>  
 	    </execution>
 	
 	    <execution>
-	     <id>Build frontend</id>
+	     <id>webpack build</id>
 	     <goals>
-	      <goal>npm</goal>
+	      <goal>webpack</goal>
 	     </goals>
-	     <configuration>
-	      <arguments>run build</arguments>
-	     </configuration>
 	    </execution>
 	   </executions>
 	  </plugin>
+	  
 	  <plugin>
 	   <groupId>org.apache.maven.plugins</groupId>
 	   <artifactId>maven-resources-plugin</artifactId>
@@ -156,18 +160,17 @@
 	      <goal>copy-resources</goal>
 	     </goals>
 	     <configuration>
-	      <outputDirectory>${basedir}/target/classes/resources</outputDirectory>
+	      <outputDirectory>src/main/resources/static</outputDirectory>
 	      <resources>
 	       <resource>
-	        <directory>${basedir}/build</directory>
-	        <filtering>true</filtering>
+	        <directory>src/main/frontend/dist/</directory>
+	        <filtering>false</filtering>
 	       </resource>
 	      </resources>
 	     </configuration>
 	    </execution>
 	   </executions>
 	  </plugin>
-	  -->
     </plugins>
   </build>
   <packaging>war</packaging>
