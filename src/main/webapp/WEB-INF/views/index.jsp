@@ -8,9 +8,10 @@
 <!-- Static content -->
 
 
-<title>Spring Boot - React JS</title>
+<title>Summer Shopping </title>
 </head>
 <body>
+    <div id= "header"></div>
     <div id="app"></div>
     <script src="<c:url value="/resources/bundle.js"/>" type="text/javascript"> </script>
 </body>
